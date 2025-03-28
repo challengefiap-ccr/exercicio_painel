@@ -4,21 +4,54 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url('/painel-nave.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Arial', sans-serif;
+}
+
 .painel__container {
-    width: 100%;
-    height: 100%;
+    margin: 0 auto;
+    width: 90%;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     justify-content: center;
+    place-content: center;
     text-align: center;
 }
 
 .energia__container,
 .comunicador__container,
 .tempo__container {
-    background: purple;
-    height: 100vh;
+    backdrop-filter: blur(10px);
+    background: rgba(75, 72, 72, 0.637);
+    height: 30rem;
+    border-radius: 10px;
+}
+
+.energia-botao__container button,
+.comunicador-form__container button,
+.tempo__botao {
+    all: unset;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.comunicador-form__container label,
+.energia__container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-weight: bolder;
 }
 
 /*===========PAINEL DE ENERGIA==========*/
@@ -26,8 +59,8 @@
 .energia__container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
 .energia-painel__container {
@@ -44,6 +77,12 @@
     gap: 1rem;
 }
 
+.energia-painel__box span {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+}
+
 .energia-botao__container {
     display: flex;
     justify-content: center;
@@ -51,33 +90,24 @@
 }
 
 .energia-painel__barra {
+    position: relative;
     width: 20rem;
     height: 2rem;
     border: 1px solid black;
 }
 
-.energia-painel__barra::after {
-    content: var(--texto);
+.energia-painel__barra::before {
+    position: absolute;
+    content: '';
     display: block;
     width: var(--energia, 100%);
     height: 100%;
     background: var(--energia-esgotando);
-    transition: ease 0.2s;
+    transition: ease 0.4s;
 }
 
 .energia-botao__container {
     width: 100%;
-}
-
-.energia-botao__container button {
-    all: unset;
-    padding: 1rem;
-    border-radius: 10px;
-    margin: 1rem;
-    color: black;
-    font-weight: bold;
-    transition: all 0.3s;
-    cursor: pointer;
 }
 
 .energia-botao__container button:active {
@@ -98,4 +128,79 @@
 
 .energia-botao__container button:nth-child(2):hover {
     background: rgb(25, 75, 182);
+}
+
+/*===========COMUNICADOR==========*/
+
+.comunicador__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.comunicador-form__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.comunicador-historico__container {
+    max-height: 200px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    width: 100%;
+    margin: 1rem;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    margin-top: 2rem;
+    width: 20rem;
+}
+
+.comunicador-form__container textarea {
+    height: 10rem;
+    width: 20rem;
+    border-radius: 10px;
+}
+
+.comunicador-form__container button {
+    background-color: orange;
+}
+
+.comunicador-form__container button:hover {
+    background-color: rgb(241, 96, 0);
+}
+
+/*===========TEMPO ESTELAR==========*/
+
+.tempo__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
+
+.tempo__display {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.tempo__hora {
+    text-align: center;
+}
+
+.tempo__botao {
+    background-color: #61dafb;
+}
+
+.tempo__botao:hover {
+    background-color: #21a1f1;
+}
+
+@media screen and (width < 1000px) {
+    .painel__container {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

@@ -17,11 +17,12 @@ const Energia = () => {
                             '--energia-esgotando': `${
                                 porcentagem <= 30 ? 'red' : 'greenyellow'
                             }`,
-                            '--texto': `${porcentagem} == 0? 'Energia esgotada!!!:''`,
+                            '--texto':
+                                porcentagem == 0 ? 'Energia esgotada' : '',
                         }}
                         className="energia-painel__barra"
                     ></div>
-                    <span>100%</span>
+                    <span>{porcentagem}%</span>
                 </div>
 
                 <div className="energia-botao__container">
