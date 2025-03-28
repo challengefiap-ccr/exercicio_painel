@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 const Energia = () => {
     const [porcentagem, setPorcentagem] = useState<number>(100)
@@ -12,14 +12,16 @@ const Energia = () => {
                 <div className="energia-painel__box">
                     <span>0%</span>
                     <div
-                        style={{
-                            '--energia': `${porcentagem}%`,
-                            '--energia-esgotando': `${
-                                porcentagem <= 30 ? 'red' : 'greenyellow'
-                            }`,
-                            '--texto':
-                                porcentagem == 0 ? 'Energia esgotada' : '',
-                        }}
+                        style={
+                            {
+                                '--energia': `${porcentagem}%`,
+                                '--energia-esgotando': `${
+                                    porcentagem <= 30 ? 'red' : 'greenyellow'
+                                }`,
+                                '--texto':
+                                    porcentagem == 0 ? 'Energia esgotada' : '',
+                            } as React.CSSProperties
+                        }
                         className="energia-painel__barra"
                     ></div>
                     <span>{porcentagem}%</span>
